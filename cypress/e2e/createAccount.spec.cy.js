@@ -107,10 +107,10 @@ describe('Register Successfull', () => {
   })
 
   it('When I fill create account with Register Successfull', () => {
-    cy.get('#blog-title').type('Blog Tittle')
-    cy.get('#name').type('Name')
-    cy.get('#email').type('r.celis@uniandes.edu.com')
-    cy.get('#password').type('Colombia2022.')
+    cy.get('#blog-title').type('title')
+    cy.get('#name').type('name')
+    cy.get('#email').type('email@email.com')
+    cy.get('#password').type('p4ssw0rd..')
   })
 
   it('I try to create account', () => {
