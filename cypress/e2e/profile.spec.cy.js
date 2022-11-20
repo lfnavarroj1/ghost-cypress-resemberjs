@@ -1,14 +1,17 @@
+//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
+let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V4"; let port = "2369";
+
 
 describe("Go to profile", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"' + port + '"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+ port +"/ghost/#/setup");
   });
   it("And I wait for 5 seconds", () => {
     cy.wait(5000);
   });
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:"+ port +"/ghost/#/setup") {
         cy.get("#blog-title").type("cypress-testing");
         cy.get("#name").type("newUser");
         cy.get("#email").type("email@email.com");
@@ -20,7 +23,7 @@ describe("Go to profile", () => {
   });
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+port+"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -40,21 +43,26 @@ describe("Go to profile", () => {
   it("Then I expect to be in my profile", () => {
     cy.wait(5000);
     cy.url().then((url) => {
-      expect(url).to.contain("http://localhost:2368/ghost/#/settings/staff");
+      expect(url).to.contain("http://localhost:"+port+"/ghost/#/settings/staff");
     });
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./profile/" + Version + "E1_" + Date.now());
+  })
 });
 
 describe("Edit full name in profile", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"'+port+'"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+port+"/ghost/#/setup");
   });
   it("And I wait for 5 seconds", () => {
     cy.wait(5000);
   });
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:"+port+"/ghost/#/setup") {
         cy.get("#blog-title").type("cypress-testing");
         cy.get("#name").type("newUser");
         cy.get("#email").type("email@email.com");
@@ -66,7 +74,7 @@ describe("Edit full name in profile", () => {
   });
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+port+"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -90,18 +98,23 @@ describe("Edit full name in profile", () => {
   it("I expect new-name is my fullname profile", () => {
     cy.get("#user-name").should("have.value", "new-name");
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./profile/" + Version + "E2_" + Date.now());
+  });
 });
 
 describe("Edit slug in profile", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"'+ port +'"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+port+"/ghost/#/setup");
   });
   it("And I wait for 5 seconds", () => {
     cy.wait(5000);
   });
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:"+port+"/ghost/#/setup") {
         cy.get("#blog-title").type("cypress-testing");
         cy.get("#name").type("newUser");
         cy.get("#email").type("email@email.com");
@@ -113,7 +126,7 @@ describe("Edit slug in profile", () => {
   });
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+port+"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -137,18 +150,23 @@ describe("Edit slug in profile", () => {
   it("I expect new-slug is my slug profile", () => {
     cy.get("#user-slug").should("have.value", "new-slug");
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./profile/" + Version + "E3_" + Date.now());
+  })
 });
 
 describe("Edit location in profile", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"'+port+'"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+port+"/ghost/#/setup");
   });
   it("And I wait for 5 seconds", () => {
     cy.wait(5000);
   });
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:"+port+"/ghost/#/setup") {
         cy.get("#blog-title").type("cypress-testing");
         cy.get("#name").type("newUser");
         cy.get("#email").type("email@email.com");
@@ -160,7 +178,7 @@ describe("Edit location in profile", () => {
   });
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+port+"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -184,18 +202,24 @@ describe("Edit location in profile", () => {
   it("I expect new-location is my location profile", () => {
     cy.get("#user-location").should("have.value", "new-location");
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./profile/" + Version + "E4_" + Date.now());
+  })
+
 });
 
 describe("Edit Bio in profile", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"'+port+'"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+port+"/ghost/#/setup");
   });
   it("And I wait for 5 seconds", () => {
     cy.wait(5000);
   });
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:"+port+"/ghost/#/setup") {
         cy.get("#blog-title").type("cypress-testing");
         cy.get("#name").type("newUser");
         cy.get("#email").type("email@email.com");
@@ -207,7 +231,7 @@ describe("Edit Bio in profile", () => {
   });
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+port+"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -231,6 +255,11 @@ describe("Edit Bio in profile", () => {
   it("I expect new-bio is my bio profile", () => {
     cy.get("#user-bio").should("have.value", "new-bio");
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./profile/" + Version + "E5_" + Date.now());
+  })
 });
 
 

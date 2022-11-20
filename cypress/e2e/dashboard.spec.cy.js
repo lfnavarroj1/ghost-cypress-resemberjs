@@ -1,6 +1,12 @@
+
+//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
+let BaseUrl = "http://localhost:2369/ghost/#/setup"; let Version = "V4"; let port = "2369";
+
+
+
 describe("Log in to dashboard", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"' + port + '"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+ port +"/ghost/#/setup");
   });
 
   it("And I wait for 5 seconds", () => {
@@ -9,7 +15,7 @@ describe("Log in to dashboard", () => {
 
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:" + port +"/ghost/#/setup") {
         cy.get("#blog-title").type("title");
         cy.get("#name").type("name");
         cy.get("#email").type("email@email.com");
@@ -22,7 +28,7 @@ describe("Log in to dashboard", () => {
 
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+ port +"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -33,14 +39,22 @@ describe("Log in to dashboard", () => {
   it("Then I expect to be logged in", () => {
     cy.wait(5000);
     cy.url().then((url) => {
-      expect(url).to.equal("http://localhost:2368/ghost/#/dashboard");
+      expect(url).to.equal("http://localhost:"+ port +"/ghost/#/dashboard");
     });
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./dashboard/" + Version + "E1_" + Date.now());
+  });
+  
 });
 
+
+
 describe("Log out of dashboard", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/setup"', () => {
-    cy.visit("http://localhost:2368/ghost/#/setup");
+  it('Given I navigate to page "http://localhost:"' + port + '"/ghost/#/setup"', () => {
+    cy.visit("http://localhost:"+ port +"/ghost/#/setup");
   });
 
   it("And I wait for 5 seconds", () => {
@@ -49,7 +63,7 @@ describe("Log out of dashboard", () => {
 
   it('When I fill register with "title" and "name" and "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/setup") {
+      if (url == "http://localhost:"+ port +"/ghost/#/setup") {
         cy.get("#blog-title").type("title");
         cy.get("#name").type("name");
         cy.get("#email").type("email@email.com");
@@ -60,9 +74,14 @@ describe("Log out of dashboard", () => {
     });
   });
 
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./dashboard/" + Version + "E2_" + Date.now());
+  });
+
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {
-      if (url == "http://localhost:2368/ghost/#/signin") {
+      if (url == "http://localhost:"+ port +"/ghost/#/signin") {
         cy.get("#identification").type("email@email.com");
         cy.get("#password").type("p4ssw0rd..");
         cy.get("#ember7").click({ force: true });
@@ -82,7 +101,12 @@ describe("Log out of dashboard", () => {
   it("Then I expect to be logged out", () => {
     cy.wait(5000);
     cy.url().then((url) => {
-      expect(url).to.equal("http://localhost:2368/ghost/#/signin");
+      expect(url).to.equal("http://localhost:"+ port +"/ghost/#/signin");
     });
+  });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./dashboard/" + Version + "E3_" + Date.now());
   });
 });

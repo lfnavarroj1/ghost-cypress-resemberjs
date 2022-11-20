@@ -1,6 +1,10 @@
+//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
+let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V4"; let port = "2369";
+
+
 describe("Forgot failed with non-existent user", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/signin"', () => {
-    cy.visit("http://localhost:2368/ghost/#/signin");
+  it('Given I navigate to page' + BaseUrl, () => {
+    cy.visit(BaseUrl);
   });
   it('When I fill login with "emailNonExistent@email.com" and "p4ssw0rd.."', () => {
     cy.get("#identification").type("emailNonExistent@email.com");
@@ -19,11 +23,18 @@ describe("Forgot failed with non-existent user", () => {
       }
     });
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./forgot/" + Version + "E1_" + Date.now());
+  })
 });
 
+
+// E2
 describe("Forgot failed without email", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/signin"', () => {
-    cy.visit("http://localhost:2368/ghost/#/signin");
+  it('Given I navigate to page' + BaseUrl, () => {
+    cy.visit(BaseUrl);
   });
   it('When I fill login with "" and ""', () => {
     cy.get("#identification").clear();
@@ -40,11 +51,18 @@ describe("Forgot failed without email", () => {
       );
     });
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./forgot/" + Version +"E2_" + Date.now());
+  })
+
 });
 
+//E3
 describe("Forgot failed with invalid email format", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/signin"', () => {
-    cy.visit("http://localhost:2368/ghost/#/signin");
+  it('Given I navigate to page ' + BaseUrl, () => {
+    cy.visit(BaseUrl);
   });
   it('When I fill login with "emailNonExistent" and ""', () => {
     cy.get("#identification").type("emailNonExistent");
@@ -61,11 +79,17 @@ describe("Forgot failed with invalid email format", () => {
       );
     });
   });
+
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./forgot/" +  Version + "E3_" + Date.now());
+  })
 });
 
+//E4
 describe("Forgot failed with non-existent user many times", () => {
-  it('Given I navigate to page "http://localhost:2368/ghost/#/signin"', () => {
-    cy.visit("http://localhost:2368/ghost/#/signin");
+  it('Given I navigate to page '+ BaseUrl, () => {
+    cy.visit(BaseUrl);
   });
   it('When I fill login with "emailNonExistent@email.com" and ""', () => {
     cy.get("#identification").type("emailNonExistent@email.com");
@@ -84,4 +108,8 @@ describe("Forgot failed with non-existent user many times", () => {
       expect(text).to.contains("Too many attempts");
     });
   });
+  it('I try to capture snapshot', () => {
+    cy.wait(2000);
+    cy.screenshot("./forgot/" + Version + "E4_" + Date.now());
+  })
 });
