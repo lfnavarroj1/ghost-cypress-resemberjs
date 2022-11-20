@@ -1,6 +1,7 @@
-//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
-let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V4"; let port = "2369";
+// let BaseUrl = "http://localhost:2368/ghost/#/setup"; 
+let Version = "V3"; let port = "2370";
 
+// E1
 
 describe("Go to profile", () => {
   it('Given I navigate to page "http://localhost:"' + port + '"/ghost/#/setup"', () => {
@@ -52,6 +53,8 @@ describe("Go to profile", () => {
     cy.screenshot("./profile/" + Version + "E1_" + Date.now());
   })
 });
+
+E2
 
 describe("Edit full name in profile", () => {
   it('Given I navigate to page "http://localhost:"'+port+'"/ghost/#/setup"', () => {
@@ -105,6 +108,8 @@ describe("Edit full name in profile", () => {
   });
 });
 
+E3
+
 describe("Edit slug in profile", () => {
   it('Given I navigate to page "http://localhost:"'+ port +'"/ghost/#/setup"', () => {
     cy.visit("http://localhost:"+port+"/ghost/#/setup");
@@ -156,6 +161,8 @@ describe("Edit slug in profile", () => {
     cy.screenshot("./profile/" + Version + "E3_" + Date.now());
   })
 });
+
+// E4
 
 describe("Edit location in profile", () => {
   it('Given I navigate to page "http://localhost:"'+port+'"/ghost/#/setup"', () => {
@@ -209,6 +216,8 @@ describe("Edit location in profile", () => {
   })
 
 });
+
+// E5
 
 describe("Edit Bio in profile", () => {
   it('Given I navigate to page "http://localhost:"'+port+'"/ghost/#/setup"', () => {

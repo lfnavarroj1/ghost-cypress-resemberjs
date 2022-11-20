@@ -1,5 +1,4 @@
-//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
-let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V4"; let port = "2369";
+let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
 
 
 describe("Forgot failed with non-existent user", () => {

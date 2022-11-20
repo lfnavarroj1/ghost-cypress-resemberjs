@@ -1,8 +1,8 @@
 
-//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
-let BaseUrl = "http://localhost:2369/ghost/#/setup"; let Version = "V4"; let port = "2369";
+let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5"; let port = "2368";
 
 
+// 1
 
 describe("Log in to dashboard", () => {
   it('Given I navigate to page "http://localhost:"' + port + '"/ghost/#/setup"', () => {
@@ -50,7 +50,7 @@ describe("Log in to dashboard", () => {
   
 });
 
-
+// 2
 
 describe("Log out of dashboard", () => {
   it('Given I navigate to page "http://localhost:"' + port + '"/ghost/#/setup"', () => {
@@ -78,6 +78,9 @@ describe("Log out of dashboard", () => {
     cy.wait(2000);
     cy.screenshot("./dashboard/" + Version + "E2_" + Date.now());
   });
+
+
+  // 3 
 
   it('When I fill login with "email@email.com" and "p4ssw0rd.."', () => {
     cy.url().then((url) => {

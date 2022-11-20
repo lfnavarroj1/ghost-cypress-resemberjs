@@ -1,13 +1,14 @@
-
-
-//let BaseUrl = "http://localhost:2368/ghost/#/setup"; let Version = "V5";
-let BaseUrl = "http://localhost:2369/ghost/#/setup"; let Version = "V4"; 
+let BaseUrl = "http://localhost:2370/ghost/#/setup"; let Version = "V3"; 
 
 
 // Escenario 1 Mail Invalido
 describe('Register failed with wrong email', () => {
   it('Given I navigate to page' + BaseUrl , () => {
     cy.visit(BaseUrl)
+  })
+
+  it('I click on Create your account ', () => {
+    cy.get('#ember12').click()
   })
 
   it('When I fill cretate account with incorrect email.', () => {
@@ -18,7 +19,7 @@ describe('Register failed with wrong email', () => {
   })
 
   it('I try to create account', () => {
-    cy.get('#ember8').click()
+    cy.get('#ember29').click()
   })
 
   
@@ -34,7 +35,7 @@ describe('Register failed with wrong email', () => {
 
   it('I try to capture snapshot', () => {
     cy.wait(2000);
-    cy.screenshot("./createAccount/" + Version + "E1_" + Date.now());
+    cy.screenshot("./createAccount/" + Version + "E1");
   })
 
 })
@@ -46,6 +47,10 @@ describe('Register failed with short password', () => {
     cy.visit(BaseUrl)
   })
 
+  it('I click on Create your account ', () => {
+    cy.get('#ember12').click()
+  })
+
   it('When I fill create account with short password.', () => {
     cy.get('#blog-title').type('Blog Tittle')
     cy.get('#name').type('Name')
@@ -54,7 +59,7 @@ describe('Register failed with short password', () => {
   })
 
   it('I try to create account', () => {
-    cy.get('#ember8').click()
+    cy.get('#ember29').click()
   })
 
   it('Then I expect to see "Password must be at least 10 characters long."', async () => {
@@ -66,7 +71,7 @@ describe('Register failed with short password', () => {
 
   it('I try to capture snapshot', () => {
     cy.wait(2000);
-    cy.screenshot("./createAccount/" + Version + "E2_" + Date.now());
+    cy.screenshot("./createAccount/" + Version + "E2");
   })
 
 })
@@ -78,6 +83,10 @@ describe('Register failed without tittle', () => {
     cy.visit(BaseUrl)
   })
 
+  it('I click on Create your account ', () => {
+    cy.get('#ember12').click()
+  })
+
   it('When I fill create accountwithout tittle', () => {
     // cy.get('#blog-title').type('Blog Tittle')
     cy.get('#name').type('Name')
@@ -86,7 +95,7 @@ describe('Register failed without tittle', () => {
   })
 
   it('I try to create account', () => {
-    cy.get('#ember8').click()
+    cy.get('#ember29').click()
   })
 
   it('Then I expect to see "Please enter a site title."', async () => {
@@ -98,14 +107,19 @@ describe('Register failed without tittle', () => {
 
   it('I try to capture snapshot', () => {
     cy.wait(2000);
-    cy.screenshot("./createAccount/" + Version + "E3_" + Date.now());
+    cy.screenshot("./createAccount/" + Version + "E3");
   })
 })
 
 // Escenario 4 Hacer registro sin el campo name
+
 describe('Register failed without name', () => {
   it('Given I navigate to page ' + BaseUrl, () => {
     cy.visit(BaseUrl)
+  })
+
+  it('I click on Create your account ', () => {
+    cy.get('#ember12').click()
   })
 
   it('When I fill create account without name', () => {
@@ -116,7 +130,7 @@ describe('Register failed without name', () => {
   })
 
   it('I try to create account', () => {
-    cy.get('#ember8').click()
+    cy.get('#ember29').click()
   })
 
   it('Then I expect to see "Please enter a name."', async () => {
@@ -128,14 +142,19 @@ describe('Register failed without name', () => {
 
   it('I try to capture snapshot', () => {
     cy.wait(2000);
-    cy.screenshot("./createAccount/" + Version + "E4_" + Date.now());
+    cy.screenshot("./createAccount/" + Version + "E4");
   })
 })
 
 // Escenario 5 Hacer registro satisfactorio
+
 describe('Register Successfull', () => {
   it('Given I navigate to page ' + BaseUrl, () => {
     cy.visit(BaseUrl)
+  })
+
+  it('I click on Create your account ', () => {
+    cy.get('#ember12').click()
   })
 
   it('When I fill create account with Register Successfull', () => {
@@ -146,7 +165,7 @@ describe('Register Successfull', () => {
   })
 
   it('I try to create account', () => {
-    cy.get('#ember8').click()
+    cy.get('#ember29').click()
   })
 
   it('Then I expect to see "Then I expect to be create in."', async () => {
@@ -158,6 +177,6 @@ describe('Register Successfull', () => {
 
   it('I try to capture snapshot', () => {
     cy.wait(2000);
-    cy.screenshot("./createAccount/" + Version +"E5_" + Date.now());
+    cy.screenshot("./createAccount/" + Version +"E5");
   })
 })
